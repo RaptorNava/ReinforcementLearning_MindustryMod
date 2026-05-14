@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.raptor'
+version '1.0'
+
+repositories {
+    mavenCentral() // Основной репозиторий, где лежит Java-WebSocket
+    maven { url "https://www.jitpack.io" } // Для Mindustry
+}
+
+dependencies {
+    // Библиотеки Mindustry v157
+    compileOnly "com.github.Anuken.Mindustry:core:v157"
+    compileOnly "com.github.Anuken.Arc:arc-core:v157"
+
+    // Исправленная зависимость для WebSocket
+    implementation "org.java-websocket:Java-WebSocket:1.5.4"
+}
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // Добавлено для решения конфликта дубликатов
+    
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA' // Полезно исключить подписи библиотек
+    archiveFileName = "MindustryBridge.jar"
+}
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

@@ -1,0 +1,9 @@
+{
+    "name": "mindustry-bridge",
+    "displayName": "Mindustry RL Bridge",
+    "author": "Raptor",
+    "main": "mindustry.bridge.MindustryMod",
+    "description": "WebSocket bridge for Python RL Agent",
+    "version": "1.0",
+    "minGameVersion": "157"
+}

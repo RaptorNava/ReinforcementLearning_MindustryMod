@@ -1,0 +1,8 @@
+venv/
+venv_dml/
+__pycache__/
+.vscode/
+training_log.csv
+training_log.json
+mindustry_rl_agent.py
+mindustry_sim0.py
